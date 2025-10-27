@@ -8,7 +8,7 @@ public class ChaseState : IState
     
     private Renderer aiRenderer;
     private Color originalColor;
-    private Color chaseColor = new Color(1f, 0.6470588f, 0f, 1f); // Color when it sees the player
+    private Color chaseColor = new Color(1f, 0f, 0f, 1f); // Color when it sees the player
 
     public ChaseState(AIController aiController)
     {

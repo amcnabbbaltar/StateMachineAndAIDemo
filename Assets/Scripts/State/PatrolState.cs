@@ -1,17 +1,34 @@
+using UnityEngine;
+
 public class PatrolState : IState
 {
     private AIController aiController;
     private int currentWaypointIndex = 0;
+
+    private Renderer aiRenderer;
+    private Color originalColor;
+    private Color patrolColor = new Color(0f, 1f, 0f, 1f); // Color when it sees the player
+
 
     public StateType Type => StateType.Patrol;
 
     public PatrolState(AIController aiController)
     {
         this.aiController = aiController;
+
+        aiRenderer = aiController.GetComponent<Renderer>();
+
+        if (aiRenderer != null)
+        {
+            originalColor = aiRenderer.material.color;
+        }
+
     }
 
     public void Enter()
     {
+        if (aiRenderer != null)
+            aiRenderer.material.color = patrolColor;
         //aiController.Animator.SetBool("isMoving", true);
         MoveToNextWaypoint();
     }
@@ -32,6 +49,8 @@ public class PatrolState : IState
 
     public void Exit()
     {
+        if (aiRenderer != null)
+            aiRenderer.material.color = originalColor;
         // Cleanup if necessary
     }
 
