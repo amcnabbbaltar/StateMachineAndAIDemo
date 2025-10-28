@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MazeWalker : MonoBehaviour
+public class SimpleMoveTo : MonoBehaviour
 {
     [SerializeField] private Transform _target;
     
